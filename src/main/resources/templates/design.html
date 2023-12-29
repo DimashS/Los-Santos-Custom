@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Los-Santos Custom</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<h1>Design your car!</h1>
+<img th:src="@{/images/71i9ke8PXVL._AC_UF894,1000_QL80_.jpg}"/>
+<form method="POST" th:object="${tuning}">
+    <div class="grid">
+        <div class="component-group" id="speed_boost">
+            <h3>Do you wish to buy a nitro?:</h3>
+            <div th:each="component : ${SPEED_BOOST}">
+                <input th:field="*{components}" type="checkbox"
+                       th:value="${component.id}"/>
+                <span th:text="${component.name}">COMPONENT</span><br/>
+            </div>
+        </div>
+        <div class="component-group" id="appearance_change">
+            <h3>Pick your favourite picture or color to paint it on the car:</h3>
+            <div th:each="component : ${appearance_change}">
+                <input th:field="*{components}" type="checkbox"
+                       th:value="${component.id}"/>
+                <span th:text="${component.name}">COMPONENT</span><br/>
+            </div>
+        </div>
+        <div class="component-group" id="tinting">
+            <h3>Choose transparency level of your windows:</h3>
+            <div th:each="component : ${tinting}">
+                <input th:field="*{components}" type="checkbox"
+                       th:value="${component.id}"/>
+                <span th:text="${component.name}">COMPONENT</span><br/>
+            </div>
+        </div>
+        <div class="component-group" id="wheels_tuning">
+            <h3>Determine most likely rims:</h3>
+            <div th:each="component : ${wheels_tuning}">
+                <input th:field="*{components}" type="checkbox"
+                       th:value="${component.id}"/>
+                <span th:text="${component.name}">COMPONENT</span><br/>
+            </div>
+        </div>
+        <div class="component-group" id="support-tools">
+            <h3>Make a choice to buy a element of beauty:</h3>
+            <div th:each="component : ${support_tool}">
+                <input th:field="*{components}" type="checkbox"
+                       th:value="${component.id}"/>
+                <span th:text="${component.name}">COMPONENT</span><br/>
+            </div>
+        </div>
+        <div class="component-group" id="interior">
+            <h3>Upgrade your interior:</h3>
+            <div th:each="component : ${interior}">
+                <input th:field="*{components}" type="checkbox"
+                       th:value="${component.id}"/>
+                <span th:text="${component.name}">COMPONENT</span><br/>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Choose name of your masterpiece:</h3>
+        <input type="text" th:field="*{name}"/>
+        <br/>
+        <button>Submit Your Tuning</button>
+    </div>
+</form>
+</body>
+</html>

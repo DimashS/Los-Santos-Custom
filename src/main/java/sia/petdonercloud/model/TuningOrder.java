@@ -18,7 +18,7 @@ public class TuningOrder {
 
     private List<Tuning> tunings = new ArrayList<>();
 
-    public void addDoner(Tuning tuningElement) {
-        this.tunings.add(tuningElement);
+    public void addTheWholeTuningTemplate(Tuning tuning) {
+        this.tunings.add(tuning);
     }
 }

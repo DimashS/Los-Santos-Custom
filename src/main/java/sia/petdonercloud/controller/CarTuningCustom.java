@@ -3,10 +3,7 @@ package sia.petdonercloud.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import sia.petdonercloud.model.Component;
 import sia.petdonercloud.model.Component.Type;
 import sia.petdonercloud.model.Tuning;
@@ -37,7 +34,7 @@ public class CarTuningCustom {
                 // диски на колеса из лития
                 new Component("MFFL", "MUFFLER OF THE CAR", Component.Type.SUPPORT_TOOL),
                 // глушитель
-                new Component("MFFL", "SPOILER", Component.Type.SUPPORT_TOOL),
+                new Component("SPLR", "SPOILER", Component.Type.SUPPORT_TOOL),
                 // спойлер
                 new Component("ROOF", "ROOF TUNING", Component.Type.APPEARANCE_CHANGE),
                 // тюнинг крыши
@@ -73,6 +70,14 @@ public class CarTuningCustom {
         // Если нет, раскомментируйте следующую строку:
         model.addAttribute("tuning", createTuning());
         return "design";
+    }
+
+    @PostMapping
+    public String processTuning(Tuning tuning,
+                              @ModelAttribute TuningOrder tuningOrder) {
+        tuningOrder.addTheWholeTuningTemplate(tuning);
+        log.info("Processing tuning on car: {}", tuning);
+        return "redirect:/client/order";
     }
 
     private Iterable<Component> filterByType(List<Component> components, Component.Type type) {

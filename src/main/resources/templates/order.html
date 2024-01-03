@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Los-Santos Custom</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<form method="POST" th:action="@{/client}" th:object="${tuningOrder}">
+    <h1>Order selected tuning for your car!</h1>
+    <img th:src="@{/images/img.png}"/>
+    <h3>Selected elements of tuning:</h3>
+    <a th:href="@{/design}" id="another">Choose another car</a><br/>
+    <ul>
+        <li th:each="tuning : ${tuningOrder.tunings}">
+            <span th:text="${tuning.name}">tuning name</span></li>
+    </ul>
+<!--        private String clientName;
+    private String carMark;
+    private String carModel;
+    private String carYearProduce;
+    private String clientZipCode;
+    private String ccNumber;
+    private String ccExpiration;
+    private String ccCVV;
+-->
+    <h3>Last order components...</h3>
+    <label for="clientName">Name: </label>
+    <input type="text" th:field="*{clientName}"/>
+    <br/>
+    <label for="carModel">Model of the car: </label>
+    <input type="text" th:field="*{carModel}"/>
+    <br/>
+    <label for="carYourProduce">Year of your car's release: </label>
+    <input type="text" th:field="*{carYearProduce}"/>
+    <br/>
+    <label for="your zipCode">Zip Code: </label>
+    <input type="text" th:field="*{clientZipCode}"/>
+    <br/>
+    Обработка отправленной формы 73
+    <h3>Here’s how I’ll pay...</h3>
+    <label for="ccNumber">Credit Card #: </label>
+    <input type="text" th:field="*{ccNumber}"/>
+    <br/>
+    <label for="ccExpiration">Expiration: </label>
+    <input type="text" th:field="*{ccExpiration}"/>
+    <br/>
+    <label for="ccCVV">CVV: </label>
+    <input type="text" th:field="*{ccCVV}"/>
+    <br/>
+    <input type="submit" value="Submit Order"/>
+</form>
+</body>
+</html>

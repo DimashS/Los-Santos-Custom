@@ -4,6 +4,13 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_doner_cloud
+    generate-unique-name: false
+    name: Los-Santos Custom cloud
+  #  Присвоив свойству spring.datasource.generate-unique-name
+  #  значение false, мы сообщаем фреймворку Spring,
+  #  что он не должен генерировать
+  #  уникальное случайное имя базы данных. Вместо этого следует
+  #  использовать значение свойства spring.datasource.name.
   jpa:
     show-sql: true
     properties:
